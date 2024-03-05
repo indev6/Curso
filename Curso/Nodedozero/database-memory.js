@@ -1,24 +1,33 @@
 import { randomUUID} from "node:crypto"
 export class DatabaseMemory {
+    
     #videos = new Map()
 
     //set, map (Estruturas de dados)
 
-    create(videos) {
+    create(video) {
         const videoID = randomUUID()
 
         //UUID => Unique universal ID
 
-        this.#videos.set(videoID, videos)
+        this.#videos.set(videoID, video)
     }
 
     list() {
-        return this.#videos.values()
+        return Array.from(this.#videos.entries()).map((videoArray) => {
+            const id = videoArray[0]
+            const data = videoArray[1]
+
+            return {
+                id,
+                ...data,
+            }
+        })
     }
 
 
-    update(id, videos) {
-        this.#videos.set(id, videos)
+    update(id, video) {
+        this.#videos.set(id, video)
     }
 
     delete(id) {
