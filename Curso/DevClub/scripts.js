@@ -4,10 +4,10 @@ const listaCompleta = document.querySelector('.list-tasks')
 
 let minhaListaDeItens = []
 
-function adicionarNovaTarefa(){
+function adicionarNovaTarefa() {
     minhaListaDeItens.push({
         tarefa: input.value,
-        concluida: false
+        concluida: false,
     })
 
     input.value = ''
